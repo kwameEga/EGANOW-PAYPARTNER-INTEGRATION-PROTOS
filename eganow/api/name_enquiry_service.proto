@@ -4,7 +4,7 @@ package eganow.api;
 
 option go_package = "github.com/eganow/partners/pay-partner/api;pb";
 
-import "eganow/api/name_enquiry.proto";
+import "eganow/api/name_enquiry_payload.proto";
 import "eganow/api/common.proto";
 import "google/api/annotations.proto";
 
