@@ -8,7 +8,7 @@ import "google/api/field_behavior.proto";
 
 // NameEnquiryRequest is the request sent to the NameEnquiry service
 message NameEnquiryRequest {
-  enum NameEnquiryRequestType {
+  enum RequestType {
     UNSPECIFIED = 0;
     DEBIT = 1;
     CREDIT = 2;
@@ -21,5 +21,5 @@ message NameEnquiryRequest {
   }
 
   //required for GHIPSS
-  NameEnquiryRequestType request_type = 4;
+  RequestType request_type = 4;
 }
