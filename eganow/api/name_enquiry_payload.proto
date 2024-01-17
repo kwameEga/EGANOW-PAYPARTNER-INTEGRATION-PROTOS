@@ -8,6 +8,18 @@ import "google/api/field_behavior.proto";
 
 // NameEnquiryRequest is the request sent to the NameEnquiry service
 message NameEnquiryRequest {
+  enum NameEnquiryRequestType {
+    UNSPECIFIED = 0;
+    DEBIT = 1;
+    CREDIT = 2;
+  }
+
   string bank_code = 1 [(google.api.field_behavior) = REQUIRED]; // 3 digits
-  string account_number = 2 [(google.api.field_behavior) = REQUIRED]; // 10-16 digits
+  oneof account_number {
+    string bank_account_number = 2 [(google.api.field_behavior) = REQUIRED];
+    string phone_number = 3 [(google.api.field_behavior) = REQUIRED];
+  }
+
+  //required for GHIPSS
+  NameEnquiryRequestType request_type = 4;
 }

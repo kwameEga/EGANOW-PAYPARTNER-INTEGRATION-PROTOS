@@ -10,18 +10,10 @@ import "google/api/annotations.proto";
 
 // NameEnquirySvc is the service for name enquiry transactions
 service NameEnquirySvc {
-  // GetCustomerNameForCreditRequest returns the name of the account holder for the credit request
-  rpc GetAccountHolderNameForCreditRequest(NameEnquiryRequest) returns (StringValue) {
+  // GetCustomerName returns the name of the account holder
+  rpc GetAccountHolderName(NameEnquiryRequest) returns (StringValue) {
     option (google.api.http) = {
-      post: "/v1/name-enquiry/credit"
-      body: "*"
-    };
-  }
-
-  // GetCustomerNameForDebitRequest returns the name of the account holder for the debit request
-  rpc GetAccountHolderNameForDebitRequest(NameEnquiryRequest) returns (StringValue) {
-    option (google.api.http) = {
-      post: "/v1/name-enquiry/debit"
+      post: "/v1/name-enquiry"
       body: "*"
     };
   }
