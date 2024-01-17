@@ -1,0 +1,13 @@
+syntax = "proto3";
+
+package eganow.api;
+
+option go_package = "github.com/eganow/partners/pay-partner/api;pb";
+
+import "google/api/field_behavior.proto";
+
+// NameEnquiryRequest is the request sent to the NameEnquiry service
+message NameEnquiryRequest {
+  string bank_code = 1 [(google.api.field_behavior) = REQUIRED]; // 3 digits
+  string account_number = 2 [(google.api.field_behavior) = REQUIRED]; // 10-16 digits
+}
