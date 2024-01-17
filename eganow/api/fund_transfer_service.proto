@@ -10,16 +10,16 @@ import "google/api/annotations.proto";
 
 // The fund transfer service definition.
 service FundTransferSvc {
-  // Debit an account.
-  rpc DebitAccount(FundTransferRequest) returns (FundTransferResponse) {
+  // Receive money from a customer.
+  rpc CollectionDebitTransaction(FundTransferRequest) returns (FundTransferResponse) {
     option (google.api.http) = {
       post: "/v1/accounts/debit"
       body: "*"
     };
   }
 
-  // Credit an account.
-  rpc CreditAccount(FundTransferRequest) returns (FundTransferResponse) {
+  // Send money to a customer.
+  rpc PayoutCreditTransaction(FundTransferRequest) returns (FundTransferResponse) {
     option (google.api.http) = {
       post: "/v1/accounts/credit"
       body: "*"
