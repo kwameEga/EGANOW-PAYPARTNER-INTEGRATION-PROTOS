@@ -6,16 +6,23 @@ option go_package = "github.com/eganow/partners/pay-partner/api;pb";
 
 import "google/api/field_behavior.proto";
 
-// TransferFundsRequest is the request message for the TransferFunds RPC.
-message FundTransferRequest {
-  float transaction_amount = 1 [(google.api.field_behavior) = REQUIRED];
-  float tax_amount = 8;
-
+message BankFundTransferRequest {
   string source_account_number = 2 [(google.api.field_behavior) = REQUIRED];
   string source_account_name = 3; // optional
   string destination_account_number = 4 [(google.api.field_behavior) = REQUIRED];
   string destination_account_name = 5; // optional
   string bank_code = 6 [(google.api.field_behavior) = REQUIRED];
+}
+
+// TransferFundsRequest is the request message for the TransferFunds RPC.
+message FundTransferRequest {
+  float transaction_amount = 1 [(google.api.field_behavior) = REQUIRED];
+  float tax_amount = 8;
+
+  oneof fund_transfer_account {
+    BankFundTransferRequest bank_details = 2; // use this for GHIPSS
+    string mobile_number = 3; // use this for MTN, VODAFONE, AIRTEL-TIGO
+  }
 
   string narration = 7; // optional
 
