@@ -28,7 +28,7 @@ service FundTransferSvc {
   }
 
   // Query transaction status.
-  rpc QueryTransactionStatus(StatusQueryRequest) returns (StringValue) {
+  rpc QueryTransactionStatus(StatusQueryRequest) returns (StatusQueryResponse) {
     option (google.api.http) = {
       post: "/v1/transactions/status"
       body: "*"

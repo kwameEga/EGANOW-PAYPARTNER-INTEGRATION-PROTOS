@@ -5,17 +5,16 @@ package eganow.api;
 option go_package = "github.com/eganow/partners/pay-partner/api;pb";
 
 import "google/api/field_behavior.proto";
-
-message BankFundTransferRequest {
-  string source_account_number = 2 [(google.api.field_behavior) = REQUIRED];
-  string source_account_name = 3; // optional
-  string destination_account_number = 4 [(google.api.field_behavior) = REQUIRED];
-  string destination_account_name = 5; // optional
-  string bank_code = 6 [(google.api.field_behavior) = REQUIRED];
-}
-
 // TransferFundsRequest is the request message for the TransferFunds RPC.
 message FundTransferRequest {
+  message BankFundTransferRequest {
+    string source_account_number = 2 [(google.api.field_behavior) = REQUIRED];
+    string source_account_name = 3; // optional
+    string destination_account_number = 4 [(google.api.field_behavior) = REQUIRED];
+    string destination_account_name = 5; // optional
+    string bank_code = 6 [(google.api.field_behavior) = REQUIRED];
+  }
+
   float transaction_amount = 1 [(google.api.field_behavior) = REQUIRED];
   float tax_amount = 8;
 
@@ -40,9 +39,29 @@ message FundTransferResponse {
 
 // StatusQueryRequest is the request message for the StatusQuery RPC.
 message StatusQueryRequest {
-  float amount = 1 [(google.api.field_behavior) = REQUIRED];
-  string account_number = 2 [(google.api.field_behavior) = REQUIRED];
-  string bank_code = 3 [(google.api.field_behavior) = REQUIRED];
+  message BankStatusQueryRequest {
+    float amount = 1 [(google.api.field_behavior) = REQUIRED];
+    string account_number = 2 [(google.api.field_behavior) = REQUIRED];
+    string bank_code = 3 [(google.api.field_behavior) = REQUIRED];
+  }
+
+  oneof payload {
+    BankStatusQueryRequest bank_details = 1 [(google.api.field_behavior) = REQUIRED];
+    string transaction_id = 2 [(google.api.field_behavior) = REQUIRED];
+  }
+}
+
+// StatusQueryResponse is the response message for the StatusQuery RPC.
+message StatusQueryResponse {
+  enum TransactionStatus {
+    TRANSACTION_STATUS_UNKNOWN = 0;
+    TRANSACTION_STATUS_PENDING = 1;
+    TRANSACTION_STATUS_SUCCESSFUL = 2;
+    TRANSACTION_STATUS_FAILED = 3;
+  }
+
+  string transaction_id = 1;
+  TransactionStatus status = 2; // status iof the transaction
 }
 
 // RemittanceTransferFundsRequest is the request message for the RemittanceTransferFunds RPC.
