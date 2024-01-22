@@ -45,9 +45,20 @@ message StatusQueryRequest {
     string bank_code = 3 [(google.api.field_behavior) = REQUIRED];
   }
 
+  enum TransactionStatusType {
+    TRANSACTION_STATUS_TYPE_UNKNOWN = 0;
+    TRANSACTION_STATUS_TYPE_COLLECTION = 1;
+    TRANSACTION_STATUS_TYPE_PAYOUT = 2;
+  }
+
+  message MobileStatusQueryRequest {
+    string transaction_id = 2 [(google.api.field_behavior) = REQUIRED];
+    TransactionStatusType transaction_type = 3 [(google.api.field_behavior) = REQUIRED];
+  }
+
   oneof payload {
     BankStatusQueryRequest bank_details = 1 [(google.api.field_behavior) = REQUIRED];
-    string transaction_id = 2 [(google.api.field_behavior) = REQUIRED];
+    MobileStatusQueryRequest mobile_details = 2 [(google.api.field_behavior) = REQUIRED];
   }
 }
 
