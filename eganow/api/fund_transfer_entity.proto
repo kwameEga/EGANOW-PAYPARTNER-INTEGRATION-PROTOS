@@ -4,6 +4,7 @@ package eganow.api;
 
 option go_package = "github.com/eganow/partners/pay-partner/api;pb";
 
+// Old transaction log entity
 message TransactionsLogs {
   int32 TID = 18; // transaction ID (in the database)
   string EganowTransactionID = 1;
