@@ -24,3 +24,33 @@ message TransactionsLogs {
   string ResonForManualUpdate = 16;
   string UpdatedBy = 17;
 }
+
+message TransLogMomoBankMerchant {
+  enum TransType {
+    COLLECTION = 0;
+    PAYOUT = 1;
+  }
+
+  enum UpdateType {
+    AUTO = 0;
+    MANUAL = 1;
+  }
+
+  int32 TID = 18; // transaction ID (auto increment)
+  string EganowTransRefNo = 1;
+  string PartnerTransRefNo = 6;
+  string AccountNumberOrMSISDN = 2;
+  string EganowPartnerId = 3; // MTN, Vodafone, AirtelTigo, GHIPSS
+  float TransAmount = 4;
+  TransType TransTypeCollectionOrPayout = 5;
+  string RequestID = 7; // ??
+  string ResponseID = 8; // ??
+  string TransNarration = 9;
+  string RequestDate = 10;
+  UpdateType AutoOrManualUpdate = 12;
+  string InitialRequestPayload = 14;
+  string InitialResponsePayload = 15;
+  string StatusCheckResponse = 16;
+  string LastUpdated = 11;
+  string UpdatedBy = 13;
+}
