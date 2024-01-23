@@ -5,6 +5,7 @@ package eganow.api;
 option go_package = "github.com/eganow/partners/pay-partner/api;pb";
 
 message TransactionsLogs {
+  int32 TID = 18; // transaction ID (in the database)
   string EganowTransactionID = 1;
   string PaypartnerID = 2; // pay partner ID
   string AccountNumberOrMSISDN = 3;
