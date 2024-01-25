@@ -15,6 +15,12 @@ message TransLogMomoBankMerchant {
     MANUAL = 1;
   }
 
+  enum TransStatus {
+    PENDING = 0;
+    SUCCESSFUL = 1;
+    FAILED = 2;
+  }
+
   int32 TID = 18; // transaction ID (auto increment)
   string EganowTransRefNo = 1;
   string PartnerTransRefNo = 6; // update with value received from pay partner
@@ -29,7 +35,7 @@ message TransLogMomoBankMerchant {
   UpdateType AutoOrManualUpdate = 12;
   string InitialRequestPayload = 14; // JSON/string
   string InitialResponsePayload = 15; // update with value received from pay partner (JSON/string)
-  string EganowTransactionStatus = 16;
+  TransStatus EganowTransactionStatus = 16;
   string PayPartnerTransactionStatus = 17;
   string TransactionCallbackResponse = 19;
   string LastUpdated = 11;
