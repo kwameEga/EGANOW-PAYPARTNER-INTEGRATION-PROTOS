@@ -35,7 +35,7 @@ message FundTransferRequest {
 
 // TransferFundsResponse is the response message for the TransferFunds RPC.
 message FundTransferResponse {
-  string transaction_id = 1;
+  string transaction_status = 1;
   string reference_number = 2;
 }
 
