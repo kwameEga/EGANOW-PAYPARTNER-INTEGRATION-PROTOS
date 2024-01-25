@@ -4,28 +4,6 @@ package eganow.api;
 
 option go_package = "github.com/eganow/partners/pay-partner/api;pb";
 
-// Old transaction log entity
-message TransactionsLogs {
-  int32 TID = 18; // transaction ID (in the database)
-  string EganowTransactionID = 1;
-  string PaypartnerID = 2; // pay partner ID
-  string AccountNumberOrMSISDN = 3;
-  float Amount = 4;
-  string TransactionType = 5;
-  string RequestID = 6;
-  string TransNarraiton = 7;
-  string TransactionStatus = 8;
-  string ResponseID = 9;
-  string InitialRequest = 10;
-  string InitialResponse = 11;
-  string StatusCheckResponse = 12;
-  string RequestDate = 13;
-  string LastUpdated = 14;
-  string AutoOrManualUpdate = 15;
-  string ResonForManualUpdate = 16;
-  string UpdatedBy = 17;
-}
-
 message TransLogMomoBankMerchant {
   enum TransType {
     COLLECTION = 0;
