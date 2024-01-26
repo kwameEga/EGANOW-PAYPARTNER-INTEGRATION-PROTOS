@@ -35,7 +35,7 @@ message FundTransferRequest {
 
 // TransferFundsResponse is the response message for the TransferFunds RPC.
 message FundTransferResponse {
-  string transaction_status = 1;
+  TransactionStatus transaction_status = 1;
   string reference_number = 2;
 }
 
@@ -64,15 +64,15 @@ message StatusQueryRequest {
   }
 }
 
+enum TransactionStatus {
+  TRANSACTION_STATUS_UNKNOWN = 0;
+  TRANSACTION_STATUS_PENDING = 1;
+  TRANSACTION_STATUS_SUCCESSFUL = 2;
+  TRANSACTION_STATUS_FAILED = 3;
+}
+
 // StatusQueryResponse is the response message for the StatusQuery RPC.
 message StatusQueryResponse {
-  enum TransactionStatus {
-    TRANSACTION_STATUS_UNKNOWN = 0;
-    TRANSACTION_STATUS_PENDING = 1;
-    TRANSACTION_STATUS_SUCCESSFUL = 2;
-    TRANSACTION_STATUS_FAILED = 3;
-  }
-
   string transaction_id = 1;
   TransactionStatus status = 2; // status iof the transaction
 }
