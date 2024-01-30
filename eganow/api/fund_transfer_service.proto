@@ -14,7 +14,7 @@ service FundTransferSvc {
   // Receive money from a customer.
   rpc CollectionDebitTransaction(FundTransferRequest) returns (FundTransferResponse) {
     option (google.api.http) = {
-      post: "/v1/accounts/debit"
+      post: "/accounts/debit"
       body: "*"
     };
   }
@@ -22,7 +22,7 @@ service FundTransferSvc {
   // Send money to a customer.
   rpc PayoutCreditTransaction(FundTransferRequest) returns (FundTransferResponse) {
     option (google.api.http) = {
-      post: "/v1/accounts/credit"
+      post: "/accounts/credit"
       body: "*"
     };
   }
@@ -30,7 +30,7 @@ service FundTransferSvc {
   // Query transaction status.
   rpc QueryTransactionStatus(StatusQueryRequest) returns (StatusQueryResponse) {
     option (google.api.http) = {
-      post: "/v1/transactions/status"
+      post: "/transactions/status"
       body: "*"
     };
   }
@@ -38,7 +38,7 @@ service FundTransferSvc {
   // Remittance transfer funds.
   rpc RemittanceTransferFunds(RemittanceTransferRequest) returns (FundTransferResponse) {
     option (google.api.http) = {
-      post: "/v1/remittance/transfer"
+      post: "/remittance/transfer"
       body: "*"
     };
   }
@@ -46,7 +46,7 @@ service FundTransferSvc {
   // Transaction callback from the partner.
   rpc TransactionCallback(google.api.HttpBody) returns (StringValue) {
     option (google.api.http) = {
-      post: "/v1/transactions/callback"
+      post: "/transactions/callback"
       body: "*"
     };
   }
