@@ -89,3 +89,17 @@ message RemittanceTransferRequest {
   string country_name = 6 [(google.api.field_behavior) = REQUIRED]; // must be FRA,ITL,ENG,GHA. (3 characters)
   string bank_code = 7 [(google.api.field_behavior) = REQUIRED];
 }
+
+message MtnMomoTransactionCallbackRequest {
+  message ReceiverInfo {
+    string fromFri = 1;
+    string status = 2;
+    string referenceid = 3;
+    string communicationchannel = 4;
+  }
+
+  ReceiverInfo receiverInfo = 1;
+  string transactionid = 2;
+  string externaltransactionid = 3;
+
+}

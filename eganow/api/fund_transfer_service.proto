@@ -8,6 +8,7 @@ import "eganow/api/common.proto";
 import "eganow/api/struct.proto";
 import "eganow/api/fund_transfer_payload.proto";
 import "google/api/annotations.proto";
+import "google/api/httpbody.proto";
 
 // The fund transfer service definition.
 service FundTransferSvc {
@@ -44,9 +45,17 @@ service FundTransferSvc {
   }
 
   // Transaction callback from the partner.
-  rpc TransactionCallback(Struct) returns (Empty) {
+  rpc TransactionCallback(google.api.HttpBody) returns (Empty) {
     option (google.api.http) = {
       post: "/transactions/callback"
+      body: "*"
+    };
+  }
+
+  // MtnMomoTransactionCallback callback from the partner.
+  rpc MtnMomoTransactionCallback(MtnMomoTransactionCallbackRequest) returns (Empty) {
+    option (google.api.http) = {
+      post: "/transactions/mtn-momo/callback"
       body: "*"
     };
   }
