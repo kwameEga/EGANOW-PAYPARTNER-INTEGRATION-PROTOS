@@ -7,7 +7,7 @@ option go_package = "github.com/eganow/partners/pay-partner/api;pb";
 import "eganow/api/common.proto";
 import "eganow/api/fund_transfer_payload.proto";
 import "google/api/annotations.proto";
-import "google/api/httpbody.proto";
+import "google/api/struct.proto";
 
 // The fund transfer service definition.
 service FundTransferSvc {
@@ -44,7 +44,7 @@ service FundTransferSvc {
   }
 
   // Transaction callback from the partner.
-  rpc TransactionCallback(google.api.HttpBody) returns (Empty) {
+  rpc TransactionCallback(google.api.Struct) returns (Empty) {
     option (google.api.http) = {
       post: "/transactions/callback"
       body: "*"
