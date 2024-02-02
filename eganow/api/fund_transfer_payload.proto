@@ -5,6 +5,8 @@ package eganow.api;
 option go_package = "github.com/eganow/partners/pay-partner/api;pb";
 
 import "google/api/field_behavior.proto";
+import "eganow/api/fund_transfer_entity.proto";
+
 // TransferFundsRequest is the request message for the TransferFunds RPC.
 message FundTransferRequest {
   message BankFundTransferRequest {
@@ -49,28 +51,15 @@ message StatusQueryRequest {
     string transaction_reference_number = 4 [(google.api.field_behavior) = REQUIRED];
   }
 
-  enum TransactionStatusType {
-    TRANSACTION_STATUS_TYPE_UNKNOWN = 0;
-    TRANSACTION_STATUS_TYPE_COLLECTION = 1;
-    TRANSACTION_STATUS_TYPE_PAYOUT = 2;
-  }
-
   message MobileStatusQueryRequest {
     string transaction_id = 2 [(google.api.field_behavior) = REQUIRED];
-    TransactionStatusType transaction_type = 3 [(google.api.field_behavior) = REQUIRED];
+    TransactionType transaction_type = 3 [(google.api.field_behavior) = REQUIRED];
   }
 
   oneof payload {
     BankStatusQueryRequest bank_details = 1 [(google.api.field_behavior) = REQUIRED];
     MobileStatusQueryRequest mobile_details = 2 [(google.api.field_behavior) = REQUIRED];
   }
-}
-
-enum TransactionStatus {
-  TRANSACTION_STATUS_UNKNOWN = 0;
-  TRANSACTION_STATUS_PENDING = 1;
-  TRANSACTION_STATUS_SUCCESSFUL = 2;
-  TRANSACTION_STATUS_FAILED = 3;
 }
 
 // StatusQueryResponse is the response message for the StatusQuery RPC.
@@ -90,6 +79,7 @@ message RemittanceTransferRequest {
   string bank_code = 7 [(google.api.field_behavior) = REQUIRED];
 }
 
+// MtnMomoTransactionCallbackRequest is the request message for the MtnMomoTransactionCallback RPC.
 message MtnMomoTransactionCallbackRequest {
   message ReceiverInfo {
     string fromFri = 1;
