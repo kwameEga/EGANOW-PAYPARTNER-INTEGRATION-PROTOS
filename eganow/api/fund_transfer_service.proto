@@ -14,7 +14,7 @@ service FundTransferSvc {
   // Receive money from a customer.
   rpc CollectionDebitTransaction(FundTransferRequest) returns (FundTransferResponse) {
     option (google.api.http) = {
-      post: "/accounts/debit"
+      post: "/api/accounts/debit"
       body: "*"
     };
   }
@@ -22,7 +22,7 @@ service FundTransferSvc {
   // Send money to a customer.
   rpc PayoutCreditTransaction(FundTransferRequest) returns (FundTransferResponse) {
     option (google.api.http) = {
-      post: "/accounts/credit"
+      post: "/api/accounts/credit"
       body: "*"
     };
   }
@@ -30,7 +30,7 @@ service FundTransferSvc {
   // Query transaction status.
   rpc QueryTransactionStatus(StatusQueryRequest) returns (StatusQueryResponse) {
     option (google.api.http) = {
-      post: "/transactions/status"
+      post: "/api/transactions/status"
       body: "*"
     };
   }
@@ -38,7 +38,7 @@ service FundTransferSvc {
   // Remittance transfer funds.
   rpc RemittanceTransferFunds(RemittanceTransferRequest) returns (FundTransferResponse) {
     option (google.api.http) = {
-      post: "/remittance/transfer"
+      post: "/api/remittance/transfer"
       body: "*"
     };
   }
@@ -46,7 +46,7 @@ service FundTransferSvc {
   // Transaction callback from the partner.
   rpc TransactionCallback(google.api.HttpBody) returns (Empty) {
     option (google.api.http) = {
-      post: "/transactions/ghipss/callback"
+      post: "/api/transactions/ghipss/callback"
       body: "*"
     };
   }
@@ -54,14 +54,14 @@ service FundTransferSvc {
   // MtnMomoTransactionCallback callback from the partner.
   rpc MtnMomoTransactionCallback(MtnMomoTransactionCallbackRequest) returns (Empty) {
     option (google.api.http) = {
-      post: "/transactions/mtn-momo/callback"
+      post: "/api/transactions/mtn-momo/callback"
       body: "*"
     };
   }
 
   rpc AtMoneyTransactionCallback(AtMoneyTransactionCallbackRequest) returns (Empty) {
     option (google.api.http) = {
-      post: "/transactions/at-money/callback"
+      post: "/api/transactions/at-money/callback"
       body: "*"
     };
   }
