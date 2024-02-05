@@ -93,3 +93,8 @@ message MtnMomoTransactionCallbackRequest {
   string externaltransactionid = 3;
 
 }
+
+message AtMoneyTransactionCallbackRequest {
+  string resp_code = 1;
+  string resp_desc = 2;
+}

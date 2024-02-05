@@ -46,7 +46,7 @@ service FundTransferSvc {
   // Transaction callback from the partner.
   rpc TransactionCallback(google.api.HttpBody) returns (Empty) {
     option (google.api.http) = {
-      post: "/transactions/callback"
+      post: "/transactions/ghipss/callback"
       body: "*"
     };
   }
@@ -55,6 +55,13 @@ service FundTransferSvc {
   rpc MtnMomoTransactionCallback(MtnMomoTransactionCallbackRequest) returns (Empty) {
     option (google.api.http) = {
       post: "/transactions/mtn-momo/callback"
+      body: "*"
+    };
+  }
+
+  rpc AtMoneyTransactionCallback(AtMoneyTransactionCallbackRequest) returns (Empty) {
+    option (google.api.http) = {
+      post: "/transactions/at-money/callback"
       body: "*"
     };
   }
