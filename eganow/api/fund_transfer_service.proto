@@ -13,7 +13,7 @@ service FundTransferSvc {
   // Receive money from a customer.
   rpc CollectionDebitTransaction(FundTransferRequest) returns (FundTransferResponse) {
     option (google.api.http) = {
-      post: "/mtn-api/accounts/debit"
+      post: "/mtn/api/accounts/debit"
       body: "*"
     };
   }
@@ -21,7 +21,7 @@ service FundTransferSvc {
   // Send money to a customer.
   rpc PayoutCreditTransaction(FundTransferRequest) returns (FundTransferResponse) {
     option (google.api.http) = {
-      post: "/mtn-api/accounts/credit"
+      post: "/mtn/api/accounts/credit"
       body: "*"
     };
   }
@@ -29,7 +29,7 @@ service FundTransferSvc {
   // Query transaction status.
   rpc QueryTransactionStatus(StatusQueryRequest) returns (StatusQueryResponse) {
     option (google.api.http) = {
-      post: "/mtn-api/transactions/status"
+      post: "/mtn/api/transactions/status"
       body: "*"
     };
   }
@@ -37,7 +37,7 @@ service FundTransferSvc {
   // MtnMomoTransactionCallback callback from the partner.
   rpc TransactionCallback(MtnMomoTransactionCallbackRequest) returns (Empty) {
     option (google.api.http) = {
-      post: "/mtn-api/transactions/mtn-momo/callback"
+      post: "/mtn/api/transactions/mtn-momo/callback"
       body: "*"
     };
   }
