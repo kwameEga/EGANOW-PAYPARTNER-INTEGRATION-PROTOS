@@ -94,6 +94,7 @@ message MtnMomoTransactionCallbackRequest {
 
 }
 
+// AtMoneyTransactionCallbackRequest is the request message for the AtMoneyTransactionCallback RPC.
 message AtMoneyTransactionCallbackRequest {
   string trans_id = 1;
   string trans_status = 2;
