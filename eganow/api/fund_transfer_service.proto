@@ -37,7 +37,7 @@ service FundTransferSvc {
   // MtnMomoTransactionCallback callback from the partner.
   rpc TransactionCallback(MtnMomoTransactionCallbackRequest) returns (Empty) {
     option (google.api.http) = {
-      post: "/mtn/api/transactions/mtn-momo/callback"
+      post: "/mtn/api/transactions/callback"
       body: "*"
     };
   }
