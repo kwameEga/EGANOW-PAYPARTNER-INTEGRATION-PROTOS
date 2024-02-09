@@ -2,7 +2,7 @@ syntax = "proto3";
 
 package eganow.api;
 
-option go_package = "github.com/eganow/partners/pay-partner/api;pb";
+option go_package = "github.com/eganow/partners/pay_partner/api;pb";
 
 enum TransactionStatus {
   PENDING = 0;

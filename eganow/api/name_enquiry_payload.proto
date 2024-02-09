@@ -2,7 +2,7 @@ syntax = "proto3";
 
 package eganow.api;
 
-option go_package = "github.com/eganow/partners/pay-partner/api;pb";
+option go_package = "github.com/eganow/partners/pay_partner/api;pb";
 
 import "google/api/field_behavior.proto";
 
